@@ -74,6 +74,7 @@ function dragEndCallback (chartInstance, callback) {
   }
 }
 const ChartJSdragDataPlugin = {
+  id: 'chartjs-plugin-dragdata',
   afterInit: function(chartInstance) {
     if (chartInstance.options.dragData) {
       select(chartInstance.chart.canvas).call(
