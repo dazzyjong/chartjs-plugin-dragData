@@ -87,6 +87,4 @@ const ChartJSdragDataPlugin = {
   }
 }
 
-Chart.pluginService.register(ChartJSdragDataPlugin)
-
 export default ChartJSdragDataPlugin
