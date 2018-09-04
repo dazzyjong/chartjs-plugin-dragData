@@ -12,6 +12,9 @@ function getElement (chartInstance, callback) {
       if (element) {
         scale = element['_yScale'].id
         scaleX = element['_xScale'].id
+
+        console.log('scale ' + scale + ' max ' + chartInstance.scales[scale].max + ' min ' + chartInstance.scales[scale].min)
+
         if (typeof callback === 'function' && element) callback(e,element)
       }
     }
@@ -28,6 +31,8 @@ function updateData (chartInstance, callback) {
       let x
       let y
 
+      console.log('datasetIndex: ' + datasetIndex + ' index' + index)
+
       if (e.touches) {
         x = chartInstance.scales[scaleX].getValueForPixel(e.touches[0].clientX-chartInstance.canvas.getBoundingClientRect().left)
         y = chartInstance.scales[scale].getValueForPixel(e.touches[0].clientY-chartInstance.canvas.getBoundingClientRect().top)
@@ -35,6 +40,8 @@ function updateData (chartInstance, callback) {
         x = chartInstance.scales[scaleX].getValueForPixel(e.clientX - chartInstance.canvas.getBoundingClientRect().left)
         y = chartInstance.scales[scale].getValueForPixel(e.clientY - chartInstance.canvas.getBoundingClientRect().top)
       }
+
+      console.log(e.touches + ' y ' + y)
 
       x = x > chartInstance.scales[scaleX].max ? chartInstance.scales[scaleX].max : x
       x = x < chartInstance.scales[scaleX].min ? chartInstance.scales[scaleX].min : x
