@@ -3,6 +3,7 @@ import { drag } from 'd3-drag'
 import { select, event } from 'd3-selection'
 
 let element, scale, scaleX
+var dragAllow = []
 
 function getElement (chartInstance, callback) {
   return () => {
@@ -84,6 +85,9 @@ const ChartJSdragDataPlugin = {
           .on('end', dragEndCallback(chartInstance,chartInstance.options.onDragEnd))
       )
     }
+  },
+  setAllowedDataset: function(index, allowed) {
+    dragAllow[index] = allowed
   }
 }
 
